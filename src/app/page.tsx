@@ -140,8 +140,12 @@ export default function Home() {
           <div className="flex justify-center">
             <HoverCard delay={0.2}>
               <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-md">
-                <div className="h-48 bg-stonefast-gray flex items-center justify-center">
-                  <Car className="w-16 h-16 text-stonefast-gray-dark" />
+                <div className="h-48 bg-stonefast-gray overflow-hidden">
+                  <img
+                    src="/2024-AMG-GLC-COUPE-LTG-01-DR.webp"
+                    alt="Mercedes GLC Coupé AMG 2024"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-stonefast-gray-dark mb-2">Mercedes GLC Coupé AMG 2024</h3>
