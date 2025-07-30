@@ -85,7 +85,7 @@ export default function MentionsLegalesPage() {
               </h2>
               <div className="bg-stonefast-gray-light p-6 rounded-lg">
                 <p className="text-stonefast-gray-dark">
-                  Le directeur de la publication est M. [Nom du directeur], en sa qualité de gérant de la société StoneFast.
+                  Le directeur de la publication est M. Sébastien, en sa qualité de gérant de la société StoneFast.
                 </p>
               </div>
             </div>
