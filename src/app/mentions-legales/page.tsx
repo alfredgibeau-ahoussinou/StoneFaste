@@ -97,17 +97,17 @@ export default function MentionsLegalesPage() {
                 Hébergement
               </h2>
               <div className="bg-stonefast-gray-light p-6 rounded-lg">
-                <div className="space-y-4 text-stonefast-gray-dark">
-                  <div>
-                    <strong>Hébergeur :</strong> Vercel Inc.
-                  </div>
-                  <div>
-                    <strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis
-                  </div>
-                  <div>
-                    <strong>Site web :</strong> <a href="https://vercel.com" className="text-stonefast-blue hover:underline">https://vercel.com</a>
-                  </div>
-                </div>
+                                 <div className="space-y-4 text-stonefast-gray-dark">
+                   <div>
+                     <strong>Hébergeur :</strong> Netlify Inc.
+                   </div>
+                   <div>
+                     <strong>Adresse :</strong> 2325 3rd Street, Suite 296, San Francisco, CA 94107, États-Unis
+                   </div>
+                   <div>
+                     <strong>Site web :</strong> <a href="https://netlify.com" className="text-stonefast-blue hover:underline">https://netlify.com</a>
+                   </div>
+                 </div>
               </div>
             </div>
 
