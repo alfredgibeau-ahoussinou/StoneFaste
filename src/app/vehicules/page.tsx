@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Car, Filter, Search } from 'lucide-react';
+import { Car, Filter, Search, Sparkles, Star } from 'lucide-react';
 import { vehicles } from '@/data/vehicles';
+import FadeInOnScroll from '@/components/FadeInOnScroll';
+import HoverCard from '@/components/HoverCard';
 
 const vehicleTypes = [
   { id: 'all', label: 'Tous les véhicules' },
@@ -22,113 +24,148 @@ export default function VehiculesPage() {
   });
 
   return (
-    <div className="min-h-screen bg-stonefast-gray-light">
+    <div className="min-h-screen bg-gradient-subtle">
       {/* Hero Section */}
-      <section className="bg-stonefast-blue text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-luxury text-white section-padding">
+        <div className="max-w-7xl mx-auto container-padding">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Nos véhicules
-            </h1>
-            <p className="text-xl text-stonefast-gray-light">
-              Choisissez le véhicule qui correspond à vos besoins
-            </p>
+            <FadeInOnScroll delay={0.2}>
+              <div className="mb-6">
+                <Sparkles className="w-12 h-12 text-stonefast-gold mx-auto mb-6 animate-glow" />
+                <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                  Nos{' '}
+                  <span className="text-gradient-gold">véhicules</span>
+                </h1>
+              </div>
+            </FadeInOnScroll>
+            <FadeInOnScroll delay={0.4}>
+              <p className="text-xl md:text-2xl text-stonefast-gray-light max-w-3xl mx-auto leading-relaxed">
+                Choisissez le véhicule qui correspond à vos besoins. 
+                Une flotte premium pour une expérience exceptionnelle.
+              </p>
+            </FadeInOnScroll>
           </div>
         </div>
       </section>
 
       {/* Filtres et recherche */}
-      <section className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            {/* Barre de recherche */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stonefast-gray-dark w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Rechercher un véhicule..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-stonefast-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-stonefast-blue"
-              />
-            </div>
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto container-padding">
+          <div className="glass rounded-2xl p-8 shadow-soft">
+            <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
+              {/* Barre de recherche */}
+              <div className="relative flex-1 max-w-lg">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-stonefast-gray-muted w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="Rechercher un véhicule..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-stonefast-blue focus:border-stonefast-blue text-stonefast-gray-dark placeholder-gray-400 bg-white/50 backdrop-blur-sm"
+                />
+              </div>
 
-            {/* Filtres par type */}
-            <div className="flex items-center gap-2">
-              <Filter className="w-5 h-5 text-stonefast-gray-dark" />
-              <select
-                value={selectedType}
-                onChange={(e) => setSelectedType(e.target.value)}
-                className="px-4 py-2 border border-stonefast-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-stonefast-blue"
-              >
-                {vehicleTypes.map(type => (
-                  <option key={type.id} value={type.id}>
-                    {type.label}
-                  </option>
-                ))}
-              </select>
+              {/* Filtres par type */}
+              <div className="flex items-center gap-3">
+                <Filter className="w-5 h-5 text-stonefast-gray-muted" />
+                <select
+                  value={selectedType}
+                  onChange={(e) => setSelectedType(e.target.value)}
+                  className="px-6 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-stonefast-blue focus:border-stonefast-blue text-stonefast-gray-dark bg-white/50 backdrop-blur-sm"
+                >
+                  {vehicleTypes.map(type => (
+                    <option key={type.id} value={type.id}>
+                      {type.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Liste des véhicules */}
-      <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto container-padding">
           {filteredVehicles.length === 0 ? (
-            <div className="text-center py-12">
-              <Car className="w-16 h-16 text-stonefast-gray-dark mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-stonefast-gray-dark mb-2">
-                Aucun véhicule trouvé
-              </h3>
-              <p className="text-stonefast-gray-dark">
-                Essayez de modifier vos critères de recherche
-              </p>
-            </div>
+            <FadeInOnScroll delay={0.2}>
+              <div className="text-center py-20">
+                <div className="w-24 h-24 bg-stonefast-gray-light rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Car className="w-12 h-12 text-stonefast-gray-muted" />
+                </div>
+                <h3 className="text-2xl font-semibold text-stonefast-gray-dark mb-4">
+                  Aucun véhicule trouvé
+                </h3>
+                <p className="text-stonefast-gray-muted text-lg">
+                  Essayez de modifier vos critères de recherche
+                </p>
+              </div>
+            </FadeInOnScroll>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredVehicles.map(vehicle => (
-                <div key={vehicle.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                  <div className="h-48 bg-stonefast-gray overflow-hidden">
-                    <img 
-                      src="/2024-AMG-GLC-COUPE-LTG-01-DR.webp" 
-                      alt={vehicle.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-stonefast-gray-dark mb-2">
-                      {vehicle.name}
-                    </h3>
-                    <p className="text-stonefast-gray-dark mb-4">
-                      {vehicle.description}
-                    </p>
-                    
-                    {/* Caractéristiques */}
-                    <div className="mb-4">
-                      <div className="flex flex-wrap gap-2">
-                        {vehicle.features.map((feature, index) => (
-                          <span
-                            key={index}
-                            className="bg-stonefast-gray-light text-stonefast-gray-dark px-2 py-1 rounded text-sm"
-                          >
-                            {feature}
-                          </span>
-                        ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              {filteredVehicles.map((vehicle, index) => (
+                <HoverCard key={vehicle.id} delay={index * 0.1}>
+                  <div className="card-luxury group">
+                    <div className="relative h-64 bg-stonefast-gray overflow-hidden rounded-t-2xl">
+                      <img 
+                        src="/2024-AMG-GLC-COUPE-LTG-01-DR.webp" 
+                        alt={vehicle.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute top-4 right-4 bg-stonefast-gold text-white px-3 py-1 rounded-full text-sm font-semibold shadow-elegant">
+                        {vehicle.type === 'luxe' ? (
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4" />
+                            Luxe
+                          </div>
+                        ) : vehicle.type}
+                      </div>
+                      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm text-stonefast-gray-dark px-4 py-2 rounded-xl font-bold text-lg shadow-soft">
+                        {vehicle.price}€/jour
                       </div>
                     </div>
-                    
-                    <div className="flex justify-between items-center">
-                      <span className="text-2xl font-bold text-stonefast-blue">{vehicle.price}€/jour</span>
-                      <Link
-                        href={`/vehicules/${vehicle.id}`}
-                        className="bg-stonefast-blue text-white px-4 py-2 rounded-lg hover:bg-stonefast-blue-dark transition-colors text-center block"
-                      >
-                        Voir les détails
-                      </Link>
+                    <div className="p-8">
+                      <h3 className="text-2xl font-semibold text-stonefast-gray-dark mb-3">
+                        {vehicle.name}
+                      </h3>
+                      <p className="text-stonefast-gray-muted mb-6 leading-relaxed">
+                        {vehicle.description}
+                      </p>
+                      
+                      {/* Caractéristiques principales */}
+                      <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="text-center p-3 bg-stonefast-gray-light rounded-xl">
+                          <div className="text-lg font-bold text-stonefast-blue">
+                            {vehicle.specifications.power}
+                          </div>
+                          <div className="text-sm text-stonefast-gray-muted">Puissance</div>
+                        </div>
+                        <div className="text-center p-3 bg-stonefast-gray-light rounded-xl">
+                          <div className="text-lg font-bold text-stonefast-blue">
+                            {vehicle.specifications.year}
+                          </div>
+                          <div className="text-sm text-stonefast-gray-muted">Année</div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <Link
+                          href={`/vehicules/${vehicle.id}`}
+                          className="btn-secondary flex-1 text-center"
+                        >
+                          Voir les détails
+                        </Link>
+                        <Link
+                          href={`/reservation/informations?vehicle=${vehicle.id}&price=${vehicle.price}`}
+                          className="btn-primary flex-1 text-center"
+                        >
+                          Réserver
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </HoverCard>
               ))}
             </div>
           )}
@@ -136,28 +173,28 @@ export default function VehiculesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-stonefast-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-stonefast-gray-dark mb-6">
-            Besoin d'aide pour choisir ?
-          </h2>
-          <p className="text-lg text-stonefast-gray-dark mb-8">
-            Notre équipe est là pour vous conseiller et vous accompagner
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <section className="section-padding bg-gradient-luxury text-white">
+        <div className="max-w-7xl mx-auto container-padding text-center">
+          <FadeInOnScroll delay={0.2}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Prêt à réserver votre{' '}
+              <span className="text-stonefast-gold-light">véhicule</span> ?
+            </h2>
+          </FadeInOnScroll>
+          <FadeInOnScroll delay={0.4}>
+            <p className="text-xl mb-12 text-stonefast-gray-light max-w-2xl mx-auto">
+              Commencez votre réservation en quelques clics
+            </p>
+          </FadeInOnScroll>
+          <FadeInOnScroll delay={0.6}>
             <Link
               href="/reservation/informations"
-              className="bg-stonefast-blue text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-stonefast-blue-dark transition-colors duration-200"
+              className="btn-luxury inline-flex items-center"
             >
-              Réserver un véhicule
+              <Sparkles className="w-5 h-5 mr-2" />
+              Commencer la réservation
             </Link>
-            <Link
-              href="/contact"
-              className="border-2 border-stonefast-blue text-stonefast-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-stonefast-blue hover:text-white transition-colors duration-200"
-            >
-              Nous contacter
-            </Link>
-          </div>
+          </FadeInOnScroll>
         </div>
       </section>
     </div>

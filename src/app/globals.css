@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,27 +10,121 @@
   
   body {
     font-family: 'Inter', system-ui, sans-serif;
+    background-color: #F8FAFC;
+  }
+
+  /* Typography améliorée */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  /* Scrollbar personnalisée */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #94A3B8;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748B;
   }
 }
 
 @layer components {
+  /* Boutons élégants */
   .btn-primary {
-    @apply bg-stonefast-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-stonefast-blue-dark transition-colors duration-200;
+    @apply bg-gradient-to-r from-stonefast-blue to-stonefast-blue-dark text-white px-8 py-4 rounded-xl font-semibold hover:shadow-elegant transition-all duration-300 transform hover:scale-105;
   }
   
   .btn-secondary {
-    @apply border-2 border-stonefast-blue text-stonefast-blue px-6 py-3 rounded-lg font-semibold hover:bg-stonefast-blue hover:text-white transition-colors duration-200;
+    @apply border-2 border-stonefast-blue text-stonefast-blue px-8 py-4 rounded-xl font-semibold hover:bg-stonefast-blue hover:text-white transition-all duration-300 transform hover:scale-105;
+  }
+
+  .btn-luxury {
+    @apply bg-gradient-to-r from-stonefast-gold to-stonefast-gold-light text-white px-8 py-4 rounded-xl font-semibold hover:shadow-luxury transition-all duration-300 transform hover:scale-105;
   }
   
+  /* Cartes élégantes */
   .card {
-    @apply bg-white rounded-lg shadow-lg overflow-hidden;
+    @apply bg-white rounded-2xl shadow-soft overflow-hidden border border-gray-100 hover:shadow-elegant transition-all duration-300;
+  }
+
+  .card-luxury {
+    @apply bg-white rounded-2xl shadow-luxury overflow-hidden border border-gray-100 hover:shadow-elegant transition-all duration-300 transform hover:scale-105;
   }
   
+  /* Sections avec padding élégant */
   .section-padding {
-    @apply py-16;
+    @apply py-20 lg:py-32;
   }
   
   .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+
+  /* Effets de glassmorphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-stonefast-gray-dark/80 backdrop-blur-md border border-stonefast-gray-dark/20;
+  }
+
+  /* Bordures élégantes */
+  .border-gradient {
+    background: linear-gradient(135deg, #1E3A8A, #3B82F6, #60A5FA);
+    padding: 1px;
+    border-radius: 1rem;
+  }
+
+  .border-gradient > * {
+    background: white;
+    border-radius: calc(1rem - 1px);
+  }
+
+  /* Animations personnalisées */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px rgba(30, 58, 138, 0.3);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(30, 58, 138, 0.6);
+    }
+  }
+
+  /* Effets de hover sophistiqués */
+  .hover-lift {
+    @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-elegant;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-elegant;
+  }
+
+  /* Textes avec dégradés */
+  .text-gradient {
+    @apply bg-gradient-to-r from-stonefast-blue to-stonefast-blue-dark bg-clip-text text-transparent;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-stonefast-gold to-stonefast-gold-light bg-clip-text text-transparent;
   }
 }
